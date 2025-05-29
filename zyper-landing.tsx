@@ -1,0 +1,271 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { Coins, Gamepad2, CreditCard, TrendingUp, ExternalLink } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import Image from "next/image"
+import { useState, useEffect } from "react"
+
+export default function ZyperLanding() {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+
+  useEffect(() => {
+    setDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    })
+
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const navItems = [
+    { name: "Home", href: "#", highlighted: true },
+    { name: "Zyper", href: "#" },
+    { name: "NFT Collection", href: "#" },
+    { name: "Airdrop", href: "#" },
+    { name: "Zyper Social Hub Portal", href: "#" },
+  ]
+
+  const zyperCards = [
+    {
+      icon: TrendingUp,
+      title: "Earn",
+      description: "Generate passive income through DeFi protocols and yield farming opportunities.",
+    },
+    {
+      icon: Coins,
+      title: "Stake",
+      description: "Stake your tokens to secure the network and earn rewards in the Zyper ecosystem.",
+    },
+    {
+      icon: Gamepad2,
+      title: "Play",
+      description: "Engage in blockchain gaming experiences with play-to-earn mechanics.",
+    },
+    {
+      icon: CreditCard,
+      title: "Spend",
+      description: "Use your crypto for real-world payments and seamless transactions.",
+    },
+  ]
+
+  const nftImages = [
+    "/zyper-nft-1.jpg",
+    "/zyper-nft-2.jpg",
+    "/zyper-nft-3.jpg",
+    "/zyper-nft-4.jpg",
+    "/zyper-nft-5.jpg",
+    "/zyper-nft-6.jpg",
+  ]
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white overflow-hidden">
+      {/* Animated Background */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20" />
+        {/* Animated particles */}
+        {dimensions.width > 0 && [...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-400/50 rounded-full"
+            initial={{
+              x: Math.random() * dimensions.width,
+              y: Math.random() * dimensions.height,
+            }}
+            animate={{
+              x: Math.random() * dimensions.width,
+              y: Math.random() * dimensions.height,
+            }}
+            transition={{
+              duration: Math.random() * 20 + 10,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Navigation */}
+        <motion.nav
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="p-6"
+        >
+          <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between">
+            <div className="flex items-center space-x-8">
+              {navItems.map((item, index) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`text-sm font-medium transition-colors hover:text-blue-400 ${
+                    item.highlighted ? "text-red-500" : "text-gray-300"
+                  }`}
+                >
+                  {item.name}
+                </motion.a>
+              ))}
+            </div>
+          </div>
+        </motion.nav>
+
+        {/* Hero Section */}
+        <section className="px-6 py-20">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Logo */}
+            <motion.div
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ duration: 1, type: "spring", bounce: 0.5 }}
+              className="mb-12"
+            >
+              <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
+                <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
+                  <span className="text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    Z
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent"
+            >
+              Welcome to Zyper
+            </motion.h1>
+
+            {/* Subtext */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+              className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed"
+            >
+              ZYPER is a community-driven platform that merges DeFi, NFTs, PAYMENTS, and GAMING into a seamless
+              ecosystem built on TON.
+            </motion.p>
+          </div>
+        </section>
+
+        {/* Zyper Cards Section */}
+        <section className="px-6 py-20">
+          <div className="max-w-6xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+            >
+              Zyper Ecosystem
+            </motion.h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {zyperCards.map((card, index) => (
+                <motion.div
+                  key={card.title}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ scale: 1.05, y: -10 }}
+                  transition={{ delay: index * 0.2, duration: 0.6 }}
+                  className="bg-gray-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 text-center hover:border-blue-400/50 transition-all duration-300"
+                >
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
+                    <card.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-blue-400">{card.title}</h3>
+                  <p className="text-gray-300 leading-relaxed">{card.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Zyper NFTs Section */}
+        <section className="px-6 py-20">
+          <div className="max-w-6xl mx-auto">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+            >
+              Zyper NFT Collection
+            </motion.h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+              {nftImages.map((image, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ delay: index * 0.1, duration: 0.6 }}
+                  className="relative group"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition-opacity duration-300" />
+                  <div className="relative bg-gray-800 rounded-2xl overflow-hidden border border-blue-500/20 group-hover:border-blue-400/50 transition-all duration-300">
+                    <Image
+                      src={`/zyper-nft-${index + 1}.jpg`}
+                      alt={`Zyper NFT ${index + 1}`}
+                      width={300}
+                      height={300}
+                      className="w-full h-64 object-cover"
+                    />
+                    <div className="p-4">
+                      <h3 className="text-lg font-semibold text-blue-400">Zyper NFT #{index + 1}</h3>
+                      <p className="text-gray-400 text-sm">Exclusive collection item</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
+            >
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105"
+              >
+                Explore Collection
+                <ExternalLink className="ml-2 w-5 h-5" />
+              </Button>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <motion.footer
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="px-6 py-12 border-t border-gray-800"
+        >
+          <div className="max-w-6xl mx-auto text-center">
+            <p className="text-gray-400">© 2024 Zyper. Built on TON blockchain. All rights reserved.</p>
+          </div>
+        </motion.footer>
+      </div>
+    </div>
+  )
+}
