@@ -5,6 +5,7 @@ import { Coins, Gamepad2, CreditCard, TrendingUp, ExternalLink } from "lucide-re
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useState, useEffect } from "react"
+import Link from "next/link"
 
 export default function ZyperLanding() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
@@ -236,21 +237,22 @@ export default function ZyperLanding() {
                 </motion.div>
               ))}
             </div>
-
+            <Link href="https://getgems.io/zyper?contentView=list#items" target="_blank">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center"
+              className="text-center "
             >
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105"
+                className="bg-gradient-to-r cursor-pointer from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105"
               >
                 Explore Collection
                 <ExternalLink className="ml-2 w-5 h-5" />
               </Button>
             </motion.div>
+            </Link>
           </div>
         </section>
 
