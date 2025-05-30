@@ -1,7 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Coins, Gamepad2, CreditCard, TrendingUp, ExternalLink } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Coins, Gamepad2, CreditCard, TrendingUp, ExternalLink, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useState, useEffect } from "react"
@@ -9,6 +9,8 @@ import Link from "next/link"
 
 export default function ZyperLanding() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const [selectedNavItem, setSelectedNavItem] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setDimensions({
@@ -28,11 +30,11 @@ export default function ZyperLanding() {
   }, [])
 
   const navItems = [
-    { name: "Home", href: "#", highlighted: true },
-    { name: "Zyper", href: "#" },
+    { name: "Zyper Card", href: "#"},
+    { name: "Tokenised Assets", href: "#" },
     { name: "NFT Collection", href: "#" },
-    { name: "Airdrop", href: "#" },
-    { name: "Zyper Social Hub Portal", href: "#" },
+    { name: "Social Hub", href: "#" },
+    { name: "About Us", href: "#" },
   ]
 
   const zyperCards = [
@@ -44,7 +46,7 @@ export default function ZyperLanding() {
     {
       icon: Coins,
       title: "Stake",
-      description: "Stake your tokens to secure the network and earn rewards in the Zyper ecosystem.",
+      description: "Stake your NFTs to secure the network and earn rewards in the Zyper ecosystem.",
     },
     {
       icon: Gamepad2,
@@ -103,8 +105,10 @@ export default function ZyperLanding() {
           transition={{ duration: 0.8 }}
           className="p-6"
         >
-          <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between">
-            <div className="flex items-center space-x-8">
+          <div className="max-w-7xl mx-auto flex items-center justify-between">
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.name}
@@ -113,14 +117,64 @@ export default function ZyperLanding() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   className={`text-sm font-medium transition-colors hover:text-blue-400 ${
-                    item.highlighted ? "text-red-500" : "text-gray-300"
+                    selectedNavItem === index ? "text-red-500" : "text-gray-300"
                   }`}
+                  onClick={() => setSelectedNavItem(index)}
                 >
                   {item.name}
                 </motion.a>
               ))}
             </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-gray-300 hover:text-blue-400 transition-colors"
+              >
+                {mobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
           </div>
+
+          {/* Mobile Navigation */}
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.2 }}
+                className="md:hidden absolute top-20 left-0 right-0 bg-gray-900/95 backdrop-blur-xl border-b border-gray-800/50"
+              >
+                <div className="py-6 px-6 h-screen space-y-4 flex flex-col items-center">
+                  {navItems.map((item, index) => (
+                    <motion.a
+                      key={item.name}
+                      href={item.href}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ delay: index * 0.1 }}
+                      className={`block text-lg font-medium transition-colors hover:text-blue-400 ${
+                        selectedNavItem === index ? "text-red-500" : "text-gray-300"
+                      }`}
+                      onClick={() => {
+                        setSelectedNavItem(index);
+                        setMobileMenuOpen(false);
+                      }}
+                    >
+                      {item.name}
+                    </motion.a>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.nav>
 
         {/* Hero Section */}
@@ -133,13 +187,14 @@ export default function ZyperLanding() {
               transition={{ duration: 1, type: "spring", bounce: 0.5 }}
               className="mb-12"
             >
-              <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
+              {/* <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
                 <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
                   <span className="text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                     Z
                   </span>
                 </div>
-              </div>
+              </div> */}
+              <Image src="/zyper-logo.png" alt="Zyper Logo" width={200} height={200} className="mx-auto mb-4 rounded-full" />
             </motion.div>
 
             {/* Main Heading */}
