@@ -203,7 +203,7 @@ export default function ZyperLanding() {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="text-5xl md:text-7xl font-bold mb-8 bg-gradient-to-r from-white to-blue-400 bg-clip-text text-transparent"
+              className="text-5xl md:text-7xl font-bold mb-8 md:bg-gradient-to-r bg-gradient-to-l from-white to-blue-400 bg-clip-text text-transparent"
             >
               Welcome to Zyper
             </motion.h1>
