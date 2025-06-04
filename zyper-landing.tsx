@@ -32,7 +32,7 @@ export default function ZyperLanding() {
 
   const navItems = [
     { name: "Zyper Card", href: "#"},
-    { name: "Tokenised Assets", href: "#" },
+    { name: "Tokenized Assets", href: "#" },
     { name: "NFT Collection", href: "#" },
     { name: "Social Hub", href: "#" },
     { name: "About Us", href: "#" },
@@ -320,7 +320,7 @@ export default function ZyperLanding() {
           className="px-6 py-12 border-t border-gray-800"
         >
           <div className="max-w-6xl mx-auto text-center">
-            <p className="text-gray-400">© 2024 Zyper. Built on TON blockchain. All rights reserved.</p>
+            <p className="text-gray-400">© 2025 Zyper. Built on TON blockchain. All rights reserved.</p>
           </div>
         </motion.footer>
 
