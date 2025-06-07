@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { Coins, Gamepad2, CreditCard, TrendingUp, ExternalLink, Menu, X, Ticket } from "lucide-react"
+import { CreditCard, Gamepad2, LockKeyhole, Globe, FileText, Users, ExternalLink, Menu, X, Ticket } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useState, useEffect } from "react"
@@ -39,28 +39,39 @@ export default function ZyperLanding() {
     { name: "Social Hub", href: "#" },
     { name: "About Us", href: "#" },
   ]
-
   const zyperCards = [
     {
-      icon: TrendingUp,
-      title: "Earn",
-      description: "Generate passive income through DeFi protocols and yield farming opportunities.",
-    },
-    {
-      icon: Coins,
-      title: "Stake",
-      description: "Stake your NFTs to secure the network and earn rewards in the Zyper ecosystem.",
-    },
-    {
       icon: Gamepad2,
-      title: "Play",
-      description: "Engage in blockchain gaming experiences with play-to-earn mechanics.",
+      title: "Dope Dolphins NFT",
+      description: "Own exclusive digital dolphin collectibles in our unique NFT collection.",
     },
     {
       icon: CreditCard,
-      title: "Spend",
-      description: "Use your crypto for real-world payments and seamless transactions.",
+      title: "Zyper Crypto Card",
+      description: "Experience seamless crypto payments with our next-gen digital payment card.",
     },
+    {
+      icon: Gamepad2,
+      title: "Dolphin Dash Game",
+      description: "Dive into an exciting P2E gaming experience with Dolphin Dash.",
+    },
+    {
+      icon: LockKeyhole,
+      title: "NFT Staking",
+      description: "Stake your NFTs to earn rewards in the Zyper ecosystem. Live Now!",
+      status: "Live"
+    },
+    {
+      icon: Globe,
+      title: "Internet Access",
+      description: "Connect to high-speed internet through our Starlink partnership.",
+      comingSoon: true
+    },
+    {
+      icon: Users,
+      title: "Zyper Social Hub",
+      description: "Connect, share, and engage with the Zyper community.",
+    }
   ]
 
   const nftImages = [
@@ -233,9 +244,7 @@ export default function ZyperLanding() {
               className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
             >
               Zyper Ecosystem
-            </motion.h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            </motion.h2>            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {zyperCards.map((card, index) => (
                 <motion.div
                   key={card.title}
@@ -243,8 +252,18 @@ export default function ZyperLanding() {
                   whileInView={{ opacity: 1, y: 0 }}
                   whileHover={{ scale: 1.05, y: -10 }}
                   transition={{ delay: index * 0.2, duration: 0.6 }}
-                  className="bg-gray-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 text-center hover:border-blue-400/50 transition-all duration-300"
+                  className="bg-gray-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 text-center hover:border-blue-400/50 transition-all duration-300 relative"
                 >
+                  {card.status === 'Live' && (
+                    <span className="absolute top-4 right-4 px-3 py-1 bg-green-500/20 text-green-400 text-sm font-semibold rounded-full">
+                      Live
+                    </span>
+                  )}
+                  {card.comingSoon && (
+                    <span className="absolute top-4 right-4 px-3 py-1 bg-blue-500/20 text-blue-400 text-sm font-semibold rounded-full">
+                      Coming Soon
+                    </span>
+                  )}
                   <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                     <card.icon className="w-8 h-8 text-white" />
                   </div>
