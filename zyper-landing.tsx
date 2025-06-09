@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { CreditCard, Gamepad2, LockKeyhole, Globe, FileText, Users, ExternalLink, Menu, X, Ticket } from "lucide-react"
+import { GiDolphin } from "react-icons/gi";
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useState, useEffect } from "react"
@@ -33,6 +34,8 @@ export default function ZyperLanding() {
   }, [])
 
   const navItems = [
+    {name:"Home", href: "#"},
+    { name: "Dolphin Dash Game", href: "#" },
     { name: "Zyper Card", href: "#"},
     { name: "Tokenized Assets", href: "#" },
     { name: "NFT Collection", href: "#" },
@@ -41,7 +44,7 @@ export default function ZyperLanding() {
   ]
   const zyperCards = [
     {
-      icon: Gamepad2,
+      icon: GiDolphin,
       title: "Dope Dolphins NFT",
       description: "Own exclusive digital dolphin collectibles in our unique NFT collection.",
     },
@@ -272,64 +275,6 @@ export default function ZyperLanding() {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Zyper NFTs Section */}
-        <section className="px-6 py-20">
-          <div className="max-w-6xl mx-auto">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
-            >
-              Zyper NFT Collection
-            </motion.h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-              {nftImages.map((image, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className="relative group"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition-opacity duration-300" />
-                  <div className="relative bg-gray-800 rounded-2xl overflow-hidden border border-blue-500/20 group-hover:border-blue-400/50 transition-all duration-300">
-                    <Image
-                      src={`/zyper-nft-${index + 1}.jpg`}
-                      alt={`Zyper NFT ${index + 1}`}
-                      width={300}
-                      height={300}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="p-4">
-                      <h3 className="text-lg font-semibold text-blue-400">Zyper NFT #{index + 1}</h3>
-                      <p className="text-gray-400 text-sm">Exclusive collection item</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            <Link href="https://getgems.io/zyper?contentView=list#items" target="_blank">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-center "
-            >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r cursor-pointer from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105"
-              >
-                Explore Collection
-                <ExternalLink className="ml-2 w-5 h-5" />
-              </Button>
-            </motion.div>
-            </Link>
           </div>
         </section>
 
