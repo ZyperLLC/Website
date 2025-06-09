@@ -33,8 +33,8 @@ export default function ZyperLanding() {
   const navItems = [
     { name: "Zyper Card", href: "#"},
     { name: "Tokenized Assets", href: "#" },
-    { name: "NFT Collection", href: "#" },
-    { name: "Social Hub", href: "#" },
+    { name: "NFT Collection", href: "/nftcollection" },
+    { name: "Social Hub", href: "/socialhub" },
     { name: "About Us", href: "#" },
   ]
 
