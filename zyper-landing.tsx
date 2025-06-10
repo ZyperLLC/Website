@@ -14,7 +14,7 @@ export default function ZyperLanding() {
   const [selectedNavItem, setSelectedNavItem] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showRaffleModal, setShowRaffleModal] = useState(true);
-  const [state,handleSubmit] = useForm('xdkzkpko')
+  const [state,handleSubmit] = useForm('xdkzkpko');
 
   useEffect(() => {
     setDimensions({
