@@ -54,7 +54,7 @@ export default function RaffleModal({ onClose }: RaffleModalProps) {
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-white">Limited Time Offer!</h3>
               <p className="text-gray-300">
-                Don't miss out on the exclusive Dolphin Dash Raffle. Limited tickets available!
+                Don&apos;t miss out on the exclusive Dolphin Dash Raffle. Limited tickets available!
               </p>
 
               <div className="bg-blue-500/10 rounded-lg p-4 mt-4">
