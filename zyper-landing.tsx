@@ -1,17 +1,20 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { Coins, Gamepad2, CreditCard, TrendingUp, ExternalLink, Menu, X, Ticket } from "lucide-react"
+import { CreditCard, Gamepad2, LockKeyhole, Globe, FileText, Users, ExternalLink, Menu, X, Ticket } from "lucide-react"
+import { GiDolphin } from "react-icons/gi";
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { useForm } from "@formspree/react"
 
 export default function ZyperLanding() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
   const [selectedNavItem, setSelectedNavItem] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showRaffleModal, setShowRaffleModal] = useState(true);
+  const [state,handleSubmit] = useForm('xdkzkpko')
 
   useEffect(() => {
     setDimensions({
@@ -31,34 +34,47 @@ export default function ZyperLanding() {
   }, [])
 
   const navItems = [
+    {name:"Home", href: "#"},
+    { name: "Dolphin Dash Game", href: "#" },
     { name: "Zyper Card", href: "#"},
     { name: "Tokenized Assets", href: "#" },
     { name: "NFT Collection", href: "/nftcollection" },
     { name: "Social Hub", href: "/socialhub" },
     { name: "About Us", href: "#" },
   ]
-
   const zyperCards = [
     {
-      icon: TrendingUp,
-      title: "Earn",
-      description: "Generate passive income through DeFi protocols and yield farming opportunities.",
-    },
-    {
-      icon: Coins,
-      title: "Stake",
-      description: "Stake your NFTs to secure the network and earn rewards in the Zyper ecosystem.",
-    },
-    {
-      icon: Gamepad2,
-      title: "Play",
-      description: "Engage in blockchain gaming experiences with play-to-earn mechanics.",
+      icon: GiDolphin,
+      title: "Dope Dolphins NFT",
+      description: "Own exclusive digital dolphin collectibles in our unique NFT collection.",
     },
     {
       icon: CreditCard,
-      title: "Spend",
-      description: "Use your crypto for real-world payments and seamless transactions.",
+      title: "Zyper Crypto Card",
+      description: "Experience seamless crypto payments with our next-gen digital payment card.",
     },
+    {
+      icon: Gamepad2,
+      title: "Dolphin Dash Game",
+      description: "Dive into an exciting P2E gaming experience with Dolphin Dash.",
+    },
+    {
+      icon: LockKeyhole,
+      title: "NFT Staking",
+      description: "Stake your NFTs to earn rewards in the Zyper ecosystem. Live Now!",
+      status: "Live"
+    },
+    {
+      icon: Globe,
+      title: "Internet Access",
+      description: "Connect to high-speed internet through our Starlink partnership.",
+      comingSoon: true
+    },
+    {
+      icon: Users,
+      title: "Zyper Social Hub",
+      description: "Connect, share, and engage with the Zyper community.",
+    }
   ]
 
   const nftImages = [
@@ -231,9 +247,7 @@ export default function ZyperLanding() {
               className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
             >
               Zyper Ecosystem
-            </motion.h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            </motion.h2>            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {zyperCards.map((card, index) => (
                 <motion.div
                   key={card.title}
@@ -241,8 +255,18 @@ export default function ZyperLanding() {
                   whileInView={{ opacity: 1, y: 0 }}
                   whileHover={{ scale: 1.05, y: -10 }}
                   transition={{ delay: index * 0.2, duration: 0.6 }}
-                  className="bg-gray-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 text-center hover:border-blue-400/50 transition-all duration-300"
+                  className="bg-gray-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 text-center hover:border-blue-400/50 transition-all duration-300 relative"
                 >
+                  {card.status === 'Live' && (
+                    <span className="absolute top-4 right-4 px-3 py-1 bg-green-500/20 text-green-400 text-sm font-semibold rounded-full">
+                      Live
+                    </span>
+                  )}
+                  {card.comingSoon && (
+                    <span className="absolute top-4 right-4 px-3 py-1 bg-blue-500/20 text-blue-400 text-sm font-semibold rounded-full">
+                      Coming Soon
+                    </span>
+                  )}
                   <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
                     <card.icon className="w-8 h-8 text-white" />
                   </div>
@@ -254,61 +278,96 @@ export default function ZyperLanding() {
           </div>
         </section>
 
-        {/* Zyper NFTs Section */}
-        <section className="px-6 py-20">
-          <div className="max-w-6xl mx-auto">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
-            >
-              Zyper NFT Collection
-            </motion.h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-              {nftImages.map((image, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className="relative group"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition-opacity duration-300" />
-                  <div className="relative bg-gray-800 rounded-2xl overflow-hidden border border-blue-500/20 group-hover:border-blue-400/50 transition-all duration-300">
-                    <Image
-                      src={`/zyper-nft-${index + 1}.jpg`}
-                      alt={`Zyper NFT ${index + 1}`}
-                      width={300}
-                      height={300}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="p-4">
-                      <h3 className="text-lg font-semibold text-blue-400">Zyper NFT #{index + 1}</h3>
-                      <p className="text-gray-400 text-sm">Exclusive collection item</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            <Link href="https://getgems.io/zyper?contentView=list#items" target="_blank">
+        {/* Contact Form Section */}
+        <section className="px-6 py-20 bg-gray-800/30">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-center "
+              className="text-center mb-12"
             >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r cursor-pointer from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105"
-              >
-                Explore Collection
-                <ExternalLink className="ml-2 w-5 h-5" />
-              </Button>
+              <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                Get in Touch
+              </h2>
+              <p className="text-gray-300 text-lg">
+                Have questions? We'd love to hear from you.
+              </p>
             </motion.div>
-            </Link>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="bg-gray-900/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 md:p-10"
+            >
+              <form onSubmit={handleSubmit}>
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        className="w-full bg-gray-800/50 border border-blue-500/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        className="w-full bg-gray-800/50 border border-blue-500/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                        placeholder="your@email.com"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                      Subject
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      className="w-full bg-gray-800/50 border border-blue-500/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors"
+                      placeholder="How can we help?"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      rows={6}
+                      name="message"
+                      className="w-full bg-gray-800/50 border border-blue-500/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:border-blue-400 transition-colors resize-none"
+                      placeholder="Your message..."
+                    />
+                  </div>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex justify-center"
+                  >
+                    <Button
+                      type="submit"
+                      className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-8 py-4 rounded-xl text-lg transition-all duration-300"
+                    >
+                      Send Message
+                    </Button>
+                  </motion.div>
+                </div>
+              </form>
+            </motion.div>
           </div>
         </section>
 
