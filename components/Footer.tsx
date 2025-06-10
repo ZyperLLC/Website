@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 
 export default function Footer() {
+const currentYear = new Date().getFullYear();
   return (
     <motion.footer
       initial={{ opacity: 0 }}
@@ -12,7 +13,7 @@ export default function Footer() {
     >
       <div className="max-w-6xl mx-auto text-center">
         <p className="text-gray-400">
-          © 2025 Zyper. Built on TON blockchain. All rights reserved.
+          © {currentYear}. Built on TON blockchain. All rights reserved.
         </p>
       </div>
     </motion.footer>
