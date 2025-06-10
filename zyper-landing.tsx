@@ -38,8 +38,8 @@ export default function ZyperLanding() {
     { name: "Dolphin Dash Game", href: "#" },
     { name: "Zyper Card", href: "#"},
     { name: "Tokenized Assets", href: "#" },
-    { name: "NFT Collection", href: "#" },
-    { name: "Social Hub", href: "#" },
+    { name: "NFT Collection", href: "/nftcollection" },
+    { name: "Social Hub", href: "/socialhub" },
     { name: "About Us", href: "#" },
   ]
   const zyperCards = [
