@@ -11,7 +11,7 @@ const navItems = [
   { name: "Tokenized Assets", href: "#" },
   { name: "NFT Collection", href: "/nftcollection" },
   { name: "Social Hub", href: "/socialhub" },
-  { name: "About Us", href: "#" },
+  { name: "About Us", href: "/about" },
 ]
 
 export default function Navbar() {
