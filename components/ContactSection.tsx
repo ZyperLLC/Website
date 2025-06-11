@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 
 export default function ContactSection() {
-  const [state, handleSubmit] = useForm("xdkzkpko") 
+  const [state, handleSubmit] = useForm("xdkzkpko")
 
   return (
     <section className="px-6 py-20 bg-gray-800/30">
@@ -20,7 +20,7 @@ export default function ContactSection() {
             Get in Touch
           </h2>
           <p className="text-gray-300 text-lg">
-            Have questions? We'd love to hear from you.
+            Have questions? We&apos;d love to hear from you.
           </p>
         </motion.div>
 
