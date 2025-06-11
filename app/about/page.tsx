@@ -71,7 +71,7 @@ export default function AboutSection() {
           </ul>
 
           <p>
-            With a roadmap extending to <span className="text-white font-medium">2030</span>, the launch of our native token <span className="text-green-400 font-semibold">$ZYP</span>, and community-focused initiatives like <span className="text-white font-medium">internet access programs</span> and <span className="text-white font-medium">ambassador opportunities</span> — Zyper is not just a project, it's a <span className="text-pink-400 font-semibold">movement</span>.
+            With a roadmap extending to <span className="text-white font-medium">2030</span>, the launch of our native token <span className="text-green-400 font-semibold">$ZYP</span>, and community-focused initiatives like <span className="text-white font-medium">internet access programs</span> and <span className="text-white font-medium">ambassador opportunities</span> — Zyper is not just a project, it is a <span className="text-pink-400 font-semibold">movement</span>.
           </p>
 
           <p className="text-center font-semibold text-white mt-6 text-xl">
