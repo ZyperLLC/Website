@@ -1,23 +1,58 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/Navbar"
-import Footer from "@/components/Footer"
+import type { Metadata } from 'next';
 import {Analytics} from "@vercel/analytics/react";
+import { Sora, Space_Grotesk } from "next/font/google";
+import Navbar from "@/components/Navbar"
+import Footer from '@/components/Footer';
+import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const soraFont = Sora({
   subsets: ["latin"],
+  variable: "--font-sora",
+  weight: "variable",
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceGroteskFont = Space_Grotesk({
   subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  weight: "variable",
 });
-
 export const metadata: Metadata = {
-  title: "Zyper",
+  title: {
+    template: "%s | Zyper LLC",
+    default: "Zyper LLC | Web3 Ecosystem Platform on TON",
+  },
   description: "Zyper is a modern DeFI, Web3, and Governance ecosystem manager that empowers users to create, manage, and trade digital assets seamlessly.",
+  keywords: [
+    "Blockchain", "crypto", "web3 Affiliate Platform", "zyper", "TON", "affiliate platform", "blockchain Affiliate Platform",
+    "crypto Affiliate Platform", "web3"
+  ],
+  category: "Blockchain",
+  metadataBase: new URL("https://www.zyper.org"),
+  openGraph: {
+    title: "Zyper Protocol",
+    description: "Revolutionizing the blockchain and cryptocurrency space on TON.",
+    url: "https://www.zyper.org",
+    images: [
+      {
+        url: "/assets/images/logo.png",
+        alt: "Zyper Logo",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    title: "Zyper ",
+    description: "Revolutionizing the blockchain and cryptocurrency space on TON.",
+    images: [
+      {
+        url: "/assets/images/logo.png",
+        alt: "Zyper Logo",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({
@@ -25,16 +60,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  console.log("Children:", children);
+
   return (
     <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${soraFont.variable} ${spaceGroteskFont.variable} antialiased bg-gray-900 text-white `}
       >
-         <Navbar />
+        <Navbar />
         {children}
-        <Footer />
-        <Analytics />
+         <Analytics />
+         <Footer/>
       </body>
     </html>
   );
 }
+
