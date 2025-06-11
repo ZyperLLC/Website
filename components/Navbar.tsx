@@ -5,12 +5,13 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 
 const navItems = [
-  { name: "Home", href: "#" },
-  { name: "Dolphin Dash Game", href: "#" },
+  { name: "Home", href: "/" },
+  { name: "Dolphin Dash Game", href: "/dolphindash" },
   { name: "Zyper Card", href: "#" },
   { name: "Tokenized Assets", href: "#" },
   { name: "NFT Collection", href: "/nftcollection" },
   { name: "Social Hub", href: "/socialhub" },
+  { name: "Events", href: "/events" },
   { name: "About Us", href: "/about" },
 ]
 
