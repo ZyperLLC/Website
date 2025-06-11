@@ -89,19 +89,18 @@ export default function ZyperTokenizedAssets() {
 
         {/* Image Cards Row */}
         <section className="max-w-7xl mx-auto px-6 pb-20">
-          <div className="flex flex-row flex-nowrap gap-8 justify-center">
+          <div className="flex flex-wrap justify-center gap-6">
             {cardImages.map(({ src }, idx) => (
               <motion.div
                 key={idx}
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(59, 130, 246, 0.5)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="rounded-lg overflow-hidden cursor-pointer bg-gray-800 border border-gray-700 aspect-square flex items-center justify-center"
-                style={{ width: "200px", height: "200px" }}
+                className="rounded-lg overflow-hidden cursor-pointer bg-gray-800 border border-gray-700 w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 flex items-center justify-center"
               >
                 <img
                   src={src}
                   alt={`Token image ${idx + 1}`}
-                  className="max-h-full max-w-full object-contain"
+                  className="w-full h-full object-contain"
                 />
               </motion.div>
             ))}
