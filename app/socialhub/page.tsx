@@ -7,20 +7,16 @@ export default function SocialHub() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
 
   useEffect(() => {
-    setDimensions({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    })
-
-    const handleResize = () => {
+    const updateDims = () => {
       setDimensions({
         width: window.innerWidth,
         height: window.innerHeight,
       })
     }
 
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    updateDims()
+    window.addEventListener('resize', updateDims)
+    return () => window.removeEventListener('resize', updateDims)
   }, [])
 
   return (
@@ -70,8 +66,7 @@ export default function SocialHub() {
           Connect with the community, share your ideas, and explore social features built on the TON blockchain.
         </motion.p>
 
-        {/* Add more social hub content here */}
-
+        {/* You can add more content here */}
       </div>
     </div>
   )
