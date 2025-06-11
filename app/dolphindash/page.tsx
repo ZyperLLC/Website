@@ -59,7 +59,7 @@ export default function DolphinDashSection() {
         </p>
 
         <p className="text-gray-300 text-lg">
-          Winners earn big and all bets help fuel the ecosystem. Whether you're here for fun or profit, this game delivers both.
+          Winners earn big and all bets help fuel the ecosystem. Whether you are here for fun or profit, this game delivers both.
         </p>
 
         <div className="mt-8">
