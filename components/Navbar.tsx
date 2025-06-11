@@ -1,8 +1,8 @@
 "use client"
 
+import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
-import { useState } from "react"
 
 const navItems = [
   { name: "Home", href: "#" },
@@ -23,10 +23,10 @@ export default function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="p-6"
+      className="p-6 z-20 relative"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Desktop Navigation */}
+        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           {navItems.map((item, index) => (
             <motion.a
