@@ -13,7 +13,7 @@ const currentYear = new Date().getFullYear();
     >
       <div className="max-w-6xl mx-auto text-center">
         <p className="text-gray-400">
-          © {currentYear}. Built on TON blockchain. All rights reserved.
+          © {currentYear}. All rights reserved.
         </p>
       </div>
     </motion.footer>
