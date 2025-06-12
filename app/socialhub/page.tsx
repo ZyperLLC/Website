@@ -64,7 +64,7 @@ export default function ZyperNFTCollection() {
   <p>Connect. Collaborate. Contribute.</p>
 
   <p>
-    The Zyper Social Hub is a unique Web3-powered platform designed to unite the Zyper community, creators, job seekers, and blockchain projects in one seamless ecosystem. Whether you're looking to find talent, offer your skills, or discover exciting crypto opportunities, the Social Hub makes it easy.
+    The Zyper Social Hub is a unique Web3-powered platform designed to unite the Zyper community, creators, job seekers, and blockchain projects in one seamless ecosystem. Whether you&apos;re looking to find talent, offer your skills, or discover exciting crypto opportunities, the Social Hub makes it easy.
   </p>
 
   <p className="font-semibold text-white">What You Can Do:</p>
