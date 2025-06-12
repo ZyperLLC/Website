@@ -3,12 +3,13 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
+import { usePathname } from "next/navigation"
 
 const navItems = [
   { name: "Home", href: "/" },
   { name: "Dolphin Dash Game", href: "/dolphindash" },
-  { name: "Zyper Card", href: "#" },
-  { name: "Tokenized Assets", href: "#" },
+  { name: "Zyper Card", href: "/zypercard" },
+  { name: "Tokenized Assets", href: "/tokenizedassets" },
   { name: "NFT Collection", href: "/nftcollection" },
   { name: "Social Hub", href: "/socialhub" },
   { name: "Events", href: "/events" },
@@ -16,7 +17,9 @@ const navItems = [
 ]
 
 export default function Navbar() {
-  const [selectedNavItem, setSelectedNavItem] = useState(0)
+  const patth = usePathname();
+  const isActivePath = navItems.findIndex(item => item.href === patth);
+  const [selectedNavItem, setSelectedNavItem] = useState(isActivePath)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
