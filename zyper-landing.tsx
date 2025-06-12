@@ -14,7 +14,7 @@ export default function ZyperLanding() {
   const [selectedNavItem, setSelectedNavItem] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showRaffleModal, setShowRaffleModal] = useState(true);
-  const [state,handleSubmit] = useForm('xdkzkpko')
+  const [state,handleSubmit] = useForm('xdkzkpko');
 
   useEffect(() => {
     setDimensions({
@@ -36,10 +36,10 @@ export default function ZyperLanding() {
   const navItems = [
     {name:"Home", href: "#"},
     { name: "Dolphin Dash Game", href: "#" },
-    { name: "Zyper Card", href: "#"},
-    { name: "Tokenized Assets", href: "#" },
-    { name: "NFT Collection", href: "#" },
-    { name: "Social Hub", href: "#" },
+    { name: "Zyper Card", href: "/zypercard"},
+    { name: "Tokenized Assets", href: "/tokenizedassets" },
+    { name: "NFT Collection", href: "/nftcollection" },
+    { name: "Social Hub", href: "/socialhub" },
     { name: "About Us", href: "#" },
   ]
   const zyperCards = [
@@ -67,7 +67,7 @@ export default function ZyperLanding() {
     {
       icon: Globe,
       title: "Internet Access",
-      description: "Connect to high-speed internet through our Starlink partnership.",
+      description: "Connect to high-speed internet through our partnership.",
       comingSoon: true
     },
     {
