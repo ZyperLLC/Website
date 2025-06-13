@@ -9,6 +9,7 @@ import {
   faDiscord,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
 
 export const socialLinks = [
   {
@@ -21,7 +22,6 @@ export const socialLinks = [
     icon: faXTwitter,
     href: "https://x.com/ZYPER_officialX",
   },
-
   {
     name: "Discord",
     icon: faDiscord,
@@ -40,28 +40,33 @@ export const socialLinks = [
 ];
 
 export default function Footer() {
-const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear();
+
   return (
     <motion.footer
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="px-6 py-12 border-t border-gray-800"
+      className="px-6 py-12 border-t border-gray-800 relative "
     >
       <div className="max-w-6xl mx-auto text-center">
-        <div className="flex justify-center gap-6">
-            {socialLinks.map((link) => (
-              <a href={link.href} key={link.name}>
-                <div className="size-10 rounded-full inline-flex items-center justify-center">
-                  <FontAwesomeIcon icon={link.icon} className="size-6" />
-                </div>
-              </a>
-            ))}
-          </div>
+        <div className="flex justify-center gap-6 mb-4">
+          {socialLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="size-10 rounded-full inline-flex items-center justify-center hover:bg-gray-700 transition-colors"
+            >
+              <FontAwesomeIcon icon={link.icon} className="size-6 text-white" />
+            </Link>
+          ))}
+        </div>
         <p className="text-gray-400">
           © {currentYear}. Built on TON blockchain. All rights reserved.
         </p>
       </div>
     </motion.footer>
-  )
+  );
 }
