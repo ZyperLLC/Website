@@ -1,8 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
-import RaffleModal from "@/components/RaffleModal"
+import { motion } from "framer-motion"
 import HeroSection from "@/components/HeroSection"
 import ZyperCardsSection from "@/components/ZyperCardsSection"
 import ContactSection from "@/components/ContactSection"
@@ -10,7 +9,6 @@ import ContactSection from "@/components/ContactSection"
 
 export default function ZyperLanding() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const [showRaffleModal, setShowRaffleModal] = useState(true)
 
   useEffect(() => {
     const updateSize = () => {
