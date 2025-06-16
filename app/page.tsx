@@ -56,9 +56,6 @@ export default function ZyperLanding() {
         <HeroSection />
         <ZyperCardsSection />
         <ContactSection />
-        <AnimatePresence>
-          {showRaffleModal && <RaffleModal onClose={() => setShowRaffleModal(false)} />}
-        </AnimatePresence>
       </div>
     </div>
   )
