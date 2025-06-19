@@ -65,7 +65,7 @@ export default function ZyperNFTCollection() {
             >
               Dive into the Ocean of Utility.{" "}
               <strong className="text-blue-400">Dope Dolphins</strong> is Zyper’s
-              genesis NFT collection, featuring 300 unique dolphins with real value.
+              NFT collection, featuring 300 unique dolphins with real value.
               Holders can stake their NFTs for monthly TON rewards, gain access to
               exclusive airdrops, early access to the Zyper Crypto Card, and
               guaranteed cashback perks. Listed on Getgems, this collection is your

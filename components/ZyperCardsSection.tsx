@@ -44,8 +44,7 @@ const zyperCards = [
   {
     icon: Globe,
     title: "Internet Access",
-    description:
-      "Connect to high-speed internet through our Starlink partnership.",
+    description: "Connect to high-speed internet through our partnership.",
     comingSoon: true,
     link: "/",
   },
