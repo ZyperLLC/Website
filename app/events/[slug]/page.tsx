@@ -1,22 +1,12 @@
-"use client"
 import { notFound } from "next/navigation"
 import { events } from "../data"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
 
-export default function EventSlugPage({ params }: { params: { slug: string } }) {
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  useEffect(() => {
-    const updateDims = () => setDimensions({ width: window.innerWidth, height: window.innerHeight })
-    updateDims()
-    window.addEventListener("resize", updateDims)
-    return () => window.removeEventListener("resize", updateDims)
-  }, [])
-
-  const event = events.find(e => e.slug === params.slug)
+export default async function Page({ params }: { params: Promise<{ slug: string } >}) {
+  const {slug} = await params;
+  const event = events.find(e => e.slug === slug)
   if (!event) return notFound()
 
   const isEventEnded = (date: string) => {
@@ -26,29 +16,22 @@ export default function EventSlugPage({ params }: { params: { slug: string } }) 
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white px-4 py-12 relative overflow-hidden">
-      {/* Animated background */}
+      {/* Animated background (static fallback for server component) */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20" />
-        {dimensions.width > 0 &&
-          [...Array(50)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-400/50 rounded-full"
-              initial={{
-                x: Math.random() * dimensions.width,
-                y: Math.random() * dimensions.height,
-              }}
-              animate={{
-                x: Math.random() * dimensions.width,
-                y: Math.random() * dimensions.height,
-              }}
-              transition={{
-                duration: Math.random() * 20 + 10,
-                repeat: Infinity,
-                repeatType: "reverse",
-              }}
-            />
-          ))}
+        {/* 50 static dots for background */}
+        {[...Array(50)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-400/50 rounded-full"
+            style={{
+              left: `${(i * 37) % 100}%`,
+              top: `${(i * 73) % 100}%`,
+              opacity: 0.5 + 0.5 * Math.sin(i),
+              filter: 'blur(1px)'
+            }}
+          />
+        ))}
       </div>
       <div className="relative z-10 w-full flex items-center justify-center">
         <div className="bg-gray-800 rounded-2xl shadow-xl border border-blue-500/20 p-8 max-w-[60vw] w-full flex flex-col items-center">
