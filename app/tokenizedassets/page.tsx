@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { useState, useEffect } from "react"
 
 const cardImages = [
@@ -75,7 +76,7 @@ export default function ZyperTokenizedAssets() {
 
               <p>
                 🌾 <strong>Agri Crypto — Farming Meets DeFi</strong><br />
-                We’re bridging agriculture and blockchain by tokenizing agricultural assets. Through Agri Crypto, users can invest in real-world farming operations, support local producers, and receive token-based yields.
+                We&apos;re bridging agriculture and blockchain by tokenizing agricultural assets. Through Agri Crypto, users can invest in real-world farming operations, support local producers, and receive token-based yields.
               </p>
 
               <ul className="list-none space-y-2">
@@ -97,7 +98,7 @@ export default function ZyperTokenizedAssets() {
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="rounded-lg overflow-hidden cursor-pointer bg-gray-800 border border-gray-700 w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 flex items-center justify-center"
               >
-                <img
+                <Image
                   src={src}
                   alt={`Token image ${idx + 1}`}
                   className="w-full h-full object-contain"
