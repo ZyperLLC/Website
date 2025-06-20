@@ -64,7 +64,7 @@ export default function Footer() {
           ))}
         </div>
         <p className="text-gray-400">
-          © {currentYear}. Built on TON blockchain. All rights reserved.
+          © {currentYear}. All rights reserved.
         </p>
       </div>
     </motion.footer>
