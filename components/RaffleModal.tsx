@@ -1,9 +1,8 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Ticket } from "lucide-react"
+import { X } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
 type RaffleModalProps = {
@@ -43,8 +42,8 @@ export default function RaffleModal({ onClose }: RaffleModalProps) {
           <div className="text-center">
             <div className="relative w-full h-48 mb-6">
               <Image
-                src="/zyper-nft-ticket.png"
-                alt="Dolphin Dash Raffle"
+                src="/dolphin-dash-nft-1.jpg"
+                alt="Dolphin Dash NFT"
                 fill
                 className="object-cover rounded-xl"
               />
@@ -52,24 +51,22 @@ export default function RaffleModal({ onClose }: RaffleModalProps) {
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-white">Limited Time Offer!</h3>
+              <h3 className="text-2xl font-bold text-white">Dolphin Dash NFT!!</h3>
               <p className="text-gray-300">
-                Don&apos;t miss out on the exclusive Dolphin Dash Raffle. Limited tickets available!
+              Unlock a new upcoming key to the Zyper ecosystem with real rewards and exclusive benefits<br/>
+              🔥 Collect. Stake. Win. Repeat.
+              <br/>
+              Don&apos;t miss the next wave; stay updated!
               </p>
-
-              <div className="bg-blue-500/10 rounded-lg p-4 mt-4">
-                <p className="text-blue-400 font-semibold">Only 25 tickets!!</p>
-              </div>
-
-              <Link
-                href="ton://transfer/UQBHDWjKC84Pg4mjB-49s29nKaVJwJUCZqILttVSQ5uUJdV7?amount=1000000000"
-                className="block mt-6"
-              >
-                <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-6 rounded-xl text-lg transition-all duration-300 hover:scale-[1.02]">
-                  Buy Tickets Now
-                  <Ticket className="ml-2 w-5 h-5" />
+                <Button
+                  className="text-xl font-extrabold mb-2 bg-gradient-to-r from-red-400 via-yellow-400 via-green-400 via-blue-400 to-purple-500 bg-clip-text text-transparent animate-pulse"
+                  style={{
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  Coming Soon
                 </Button>
-              </Link>
             </div>
           </div>
         </motion.div>
