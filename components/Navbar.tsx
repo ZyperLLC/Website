@@ -10,7 +10,6 @@ const navItems = [
   { name: "Dolphin Dash Game", href: "/dolphindash" },
   { name: "Zyper Card", href: "/zypercard" },
   { name: "Tokenized Assets", href: "/tokenizedassets" },
-  { name: "Dolphin NFT", href: "/dolphinnft" },
   { name: "NFT Collection", href: "/nftcollection" },
   { name: "Social Hub", href: "/socialhub" },
   { name: "Events", href: "/events" },

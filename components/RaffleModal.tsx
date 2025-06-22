@@ -59,7 +59,7 @@ export default function RaffleModal({ onClose }: RaffleModalProps) {
               <br/>
               Don&apos;t miss the next wave; stay updated!
               </p>
-              <Link href="/ddnft" className="inline-block cursor-pointer">
+              <Link href="/dolphinnft" className="inline-block cursor-pointer">
                 <Button
                   className="text-xl font-bold mb-2 bg-gradient-to-r from-red-400 via-yellow-400 via-green-400 via-blue-400 to-purple-500 bg-clip-text text-transparent border-2 border-white/20 hover:border-white/40 cursor-pointer active:scale-90 transition-all duration-150 w-full px-20 py-6"
                 >
