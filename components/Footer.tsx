@@ -35,7 +35,7 @@ export const socialLinks = [
   {
     name: "Telegram",
     icon: faTelegram,
-    href: "https://web.telegram.org/k/#@BcFC_c",
+    href: "https://t.me/BcFC_c",
   },
 ];
 
