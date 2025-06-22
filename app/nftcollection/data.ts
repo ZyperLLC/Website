@@ -127,3 +127,48 @@ export const nftItems: NFTItem[] = [
     url: "https://getgems.io/collection/EQDY93c0ImQd2QV3iIa5BRZVAUJe9_-RxCcWAz3vbzRqb_8D/EQDUF9ZaSv934EZNvfvWLGsFZjJfGSSSHWWwDRIl2x1jpk1l"
   }
 ]
+
+// data.ts
+
+export const dolphinDashItems = [
+  {
+    image: "/dolphindash1.jpg",
+    name: "FINTOSHI",
+    url: "https://getgems.io/collection/EQD1iuL091BmS8yUdqtnN2sg4gKPrPfrR-p_7yvVRppebWrX/EQCLT6uklDrNGZf2pnEMczYY0cfI7K-OxvWZcmMLDq0xunjn"
+  },
+  {
+    image: "/dolphindash2.jpg",
+    name: "EL LIQUIDATOR",
+    url: "https://getgems.io/collection/EQD1iuL091BmS8yUdqtnN2sg4gKPrPfrR-p_7yvVRppebWrX/EQDf_YVvyVg-VlDJcM8i3C3bkGA71DF6ThMsMWKFfjzBrq6Z"
+  },
+  {
+    image: "/dolphindash3.jpg",
+    name: "KOD",
+    url: "https://getgems.io/collection/EQD1iuL091BmS8yUdqtnN2sg4gKPrPfrR-p_7yvVRppebWrX/EQAI1fhRA4k7zmyfugz9xg1a8j5QsG-l1WnOQrKULKXXkx55"
+  },
+  {
+    image: "/dolphindash4.jpg",
+    name: "GASOLINA",
+    url: "https://getgems.io/collection/EQD1iuL091BmS8yUdqtnN2sg4gKPrPfrR-p_7yvVRppebWrX/EQCCthGRS7MenTqNAkPeXcIc4XVp8bq7Gybs_xE3TXQJItN9"
+  },
+  {
+    image: "/dolphindash5.jpg",
+    name: "MOONWAVE",
+    url: "https://getgems.io/collection/EQD1iuL091BmS8yUdqtnN2sg4gKPrPfrR-p_7yvVRppebWrX/EQBUiwXFrXWiY7UhrIFKv0-UhTBPzMREL2Xpjn34vudNRxMK"
+  },
+  {
+    image: "/dolphindash6.jpg",
+    name: "MODZILLA",
+    url: "https://getgems.io/collection/EQD1iuL091BmS8yUdqtnN2sg4gKPrPfrR-p_7yvVRppebWrX/EQDnt7j15vhuCumIP8lFpRMv5FE6tB9plhTCNi9NNQpPMKuY"
+  },
+  {
+    image: "/dolphindash1.jpg",
+    name: "FINTOSHI",
+    url: "https://getgems.io/collection/EQD1iuL091BmS8yUdqtnN2sg4gKPrPfrR-p_7yvVRppebWrX/EQCLT6uklDrNGZf2pnEMczYY0cfI7K-OxvWZcmMLDq0xunjn"
+  },
+  {
+    image: "/dolphindash2.jpg",
+    name: "EL LIQUIDATOR",
+    url: "https://getgems.io/collection/EQD1iuL091BmS8yUdqtnN2sg4gKPrPfrR-p_7yvVRppebWrX/EQDf_YVvyVg-VlDJcM8i3C3bkGA71DF6ThMsMWKFfjzBrq6Z"
+  },
+]
