@@ -1,10 +1,9 @@
-'use client'
-
+"use client"
 import Image from 'next/image'
+import { useState, useEffect } from "react"
 import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 
 const benefits = [
   '1.5x Game Credits in Dolphin Dash',
@@ -29,13 +28,63 @@ const item = {
 }
 
 export default function DolphinDashNFT() {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+
+    useEffect(() => {
+      const updateDims = () =>
+        setDimensions({ width: window.innerWidth, height: window.innerHeight })
+      updateDims()
+      window.addEventListener("resize", updateDims)
+      return () => window.removeEventListener("resize", updateDims)
+    }, [])
+
   return (
-    <section className="relative bg-[#0d0c2b] overflow-x-hidden text-white py-20 px-6 md:px-16">
+    <section className="relative bg-gray-900 overflow-x-hidden text-white py-20 px-6 md:px-16">
+      {/* Animated background */}
+            <div className="fixed inset-0 z-0">
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20" />
+              {dimensions.width > 0 &&
+                [...Array(50)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1 h-1 bg-blue-400/50 rounded-full"
+                    initial={{
+                      x: Math.random() * dimensions.width,
+                      y: Math.random() * dimensions.height,
+                    }}
+                    animate={{
+                      x: Math.random() * dimensions.width,
+                      y: Math.random() * dimensions.height,
+                    }}
+                    transition={{
+                      duration: Math.random() * 20 + 10,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                    }}
+                  />
+                ))}
+            </div>
       {/* Wave Background Animation */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 left-0 w-[200%] h-[200%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#5a3fd4]/20 via-transparent to-transparent animate-pulse-slow" />
         <div className="absolute bottom-0 left-0 w-full h-[120px] bg-wave bg-repeat-x opacity-10 animate-wave" />
       </div>
+
+      {/* Decorative Wave Images */}
+      <Image
+        src="/wave-top.png"
+        alt="Top Wave"
+        width={400}
+        height={400}
+        className="absolute top-0 left-0 w-48 md:w-64 opacity-30 pointer-events-none select-none"
+      />
+      <Image
+        src="/wave-bottom.png"
+        alt="Bottom Wave"
+        width={400}
+        height={400}
+        className="absolute bottom-0 right-0 w-48 md:w-64 opacity-30 pointer-events-none select-none"
+      />
 
       {/* Content */}
       <motion.div
@@ -62,12 +111,12 @@ export default function DolphinDashNFT() {
           Unlock a new upcoming key to the Zyper ecosystem with real rewards and exclusive benefits
         </motion.p>
         <Link href="/nftcollection">
-          <motion.button
-            variants={item}
-            className="mt-8 px-6 py-3 bg-gradient-to-r from-[#ff3c7b] to-[#9e46e8] rounded-md font-medium hover:opacity-90 transition cursor-pointer"
-          >
-            Explore Collections
-          </motion.button>
+        <motion.button
+          variants={item}
+          className="mt-8 px-6 py-3 bg-gradient-to-r from-[#ff3c7b] to-[#9e46e8] rounded-md font-medium hover:opacity-90 transition cursor-pointer"
+        >
+          Explore Collections
+        </motion.button>
         </Link>
 
         {/* Benefit Cards */}
@@ -91,19 +140,20 @@ export default function DolphinDashNFT() {
       </motion.div>
 
       {/* NFT Icons with Glow */}
-      <GlowImage src="/dolphin-4.png" className="top-10 left-6 md:left-16" />
-      <GlowImage src="/dolphin-3.png" className="top-10 right-6 md:right-16" />
-      <GlowImage src="/dolphin_1.jpg" className="bottom-10 left-6 md:left-16" />
-      <GlowImage src="/dolphin-4.png" className="bottom-10 right-6 md:right-16" />
+      <GlowImage src="/dolphin-5.jpg" className="top-10 left-6 md:left-16 " width={90} height={90} />
+      <GlowImage src="/dolphin-3.png" className="top-10 right-6 md:right-16 " width={121} height={121}/>
+      <GlowImage src="/dolphin_1.jpg" className="bottom-48 left-6 md:left-16 " width={121} height={121}/>
+      <GlowImage src="/dolphin-6.jpg" className="bottom-36 right-6 md:right-16 " width={90} height={90}/>
     </section>
   )
 }
 
 // Reusable image with glow wrapper
-function GlowImage({ src, className, width, height }: { src: string; className: string; width: number; height: number }) {
+function GlowImage({ src, className, width, height}: { src: string; className: string ; width:number; height:number}) {
   return (
     <div
-      className={`hidden md:block absolute w-16 h-16 md:w-24 md:h-24 rounded-xl overflow-hidden shadow-[0_0_30px_5px_rgba(129,71,255,0.4)] ${className}`}
+       className={`hidden md:block absolute rounded-xl overflow-hidden shadow-[0_0_30px_5px_rgba(129,71,255,0.4)] ${className}`}
+      style={{ width, height }}
     >
       <Image src={src} alt="NFT" width={width} height={height} className="object-contain w-full h-full" />
     </div>
