@@ -5,10 +5,14 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { events, EventData } from "./data"
 
-export default function ZyperNFTCollection() {
+export default function ZyperEvents() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-
+  //Sort events from latest to oldest
+  const sortedEvents = [...events].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  )
   useEffect(() => {
     const updateDims = () =>
       setDimensions({ width: window.innerWidth, height: window.innerHeight })
@@ -16,6 +20,12 @@ export default function ZyperNFTCollection() {
     window.addEventListener("resize", updateDims)
     return () => window.removeEventListener("resize", updateDims)
   }, [])
+
+  // Helper to check if event is ended
+  const isEventEnded = (date: string) => {
+    const eventDate = new Date(date)
+    return eventDate.getTime() < Date.now()
+  }
 
   return (
     <div className="min-h-screen bg-gray-900 text-white overflow-hidden">
@@ -45,8 +55,8 @@ export default function ZyperNFTCollection() {
       </div>
 
       <div className="relative z-10">
-        <section className="px-6 py-20">
-          <div className="max-w-4xl mx-auto">
+        <section className="px-6 py-10">
+          <div className="max-w-screen mx-30">
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -56,73 +66,56 @@ export default function ZyperNFTCollection() {
               Zyper Events
             </motion.h2>
 
-            <div className="grid grid-cols-1 gap-8">
-              <div className="relative group rounded-2xl">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.4 }}
-                  className="relative group"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition-opacity duration-300" />
-                  <div className="relative bg-gray-800 rounded-2xl overflow-hidden border border-blue-500/20 group-hover:border-blue-400/50 transition-all duration-300">
-                    <Image
-                      src="/karaoke.jpg"
-                      alt="Karaoke Event"
-                      width={300}
-                      height={300}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="p-4 flex flex-col items-center gap-3 text-left">
-                      <div className="text-gray-400 text-sm space-y-3">
-                        <h3 className="text-lg font-semibold text-blue-400">
-                          KARAOKE + GIVEAWAY NIGHT UPDATE!
-                        </h3>
-
-                        <p>
-                          We heard your voices (some of them questionably beautiful) and now it&apos;s getting even bigger.
-                        </p>
-
-                        <p>
-                          🔊 <strong>New Venue, Same Chaos</strong><br />
-                          We&apos;re moving the party to <strong>X Space</strong> – more room for bangers, high notes, and big vibes.
-                        </p>
-
-                        <p>
-                          📅 <strong>Date:</strong> June 15, 2025<br />
-                          ⏰ <strong>Time:</strong> 5PM UTC<br />
-                          📍 <strong>Location:</strong> X Space – bring your voice, leave your shame.
-                        </p>
-
-                        <p>
-                          🎟️ <strong>RAFFLE DRAW still LIVE!</strong><br />
-                          1 TON = a shot at winning a DopeDolphins NFT<br />
-                          🐬 Didn&apos;t win? You&apos;ll still bag a VIP SBT, equal in value and vibes.
-                        </p>
-
-                        <p>
-                          ✨ <strong>BONUS:</strong> Everyone who attends gets a FREE Genesis SBT – just for showing up and vibing with us. No singing skills required.
-                        </p>
-
-                        <p>
-                          So what are you waiting for?<br />
-                          🎶 Sing. Win. Laugh. Collect. Repeat.
-                        </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2 justify-start items-center mt-20">
+              {sortedEvents.map((event: EventData) => (
+                <Link href={`/events/${event.slug}`} key={event.title}>
+                <div key={event.id} className="relative group rounded-2xl flex justify-center">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.4 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-25 group-hover:opacity-50 transition-opacity duration-300" />
+                    <div className="relative bg-gray-800 rounded-2xl overflow-hidden border border-blue-500/20 group-hover:border-blue-400/50 transition-all duration-300 p-4 flex flex-col items-center w-[320px] max-w-full mx-auto">
+                      <Image
+                        src={event.image}
+                        alt={event.title}
+                        width={300}
+                        height={180}
+                        className="w-full h-40 object-cover rounded-xl mb-3"
+                      />
+                      <h3 className="text-lg font-semibold text-blue-400 text-center">{event.title}</h3>
+                      <div className="text-gray-400 text-sm mb-2 text-center">
+                        {isNaN(new Date(event.date).getTime())
+                          ? 'Invalid Date'
+                          : new Date(event.date).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}
                       </div>
-
-                      <Link href="https://lu.ma/bs906rwo" target="_blank">
-                        <Button
-                          size="sm"
-                          className="cursor-pointer mt-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-4 py-2 rounded-full text-sm transition-all duration-300 hover:scale-105"
-                        >
-                          Register
-                        </Button>
-                      </Link>
+                      <div className="text-white text-sm text-center">
+                        {event.shortDescription}
+                        <Link href={`/events/${event.slug}`} passHref legacyBehavior>
+                          <a className="text-blue-400 ml-2 underline font-semibold animate-pulse" style={{ textShadow: '0 0 8px #7f9cf5, 0 0 16px #a78bfa' }}>
+                            Read more
+                          </a>
+                        </Link>
+                      </div>
+                      <div className="flex justify-center w-full mt-4">
+                        {isNaN(new Date(event.date).getTime()) || isEventEnded(event.date) ? (
+                          <span className="bg-gray-600 text-white font-semibold px-4 py-2 rounded-full text-sm">Ended</span>
+                        ) : (
+                          <Link href={event.registerLink} target="_blank" className="w-full flex justify-center">
+                            <Button size="sm" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full w-32">
+                              Register
+                            </Button>
+                          </Link>
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              </div>
+                  </motion.div>
+                </div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
