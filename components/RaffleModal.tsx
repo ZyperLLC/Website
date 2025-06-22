@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
+import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
@@ -58,15 +59,13 @@ export default function RaffleModal({ onClose }: RaffleModalProps) {
               <br/>
               Don&apos;t miss the next wave; stay updated!
               </p>
+              <Link href="/ddnft" className="inline-block cursor-pointer">
                 <Button
-                  className="text-xl font-extrabold mb-2 bg-gradient-to-r from-red-400 via-yellow-400 via-green-400 via-blue-400 to-purple-500 bg-clip-text text-transparent animate-pulse"
-                  style={{
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
+                  className="text-xl font-bold mb-2 bg-gradient-to-r from-red-400 via-yellow-400 via-green-400 via-blue-400 to-purple-500 bg-clip-text text-transparent border-2 border-white/20 hover:border-white/40 cursor-pointer active:scale-90 transition-all duration-150 w-full px-20 py-6"
                 >
-                  Coming Soon
+                  Know More
                 </Button>
+              </Link>
             </div>
           </div>
         </motion.div>
