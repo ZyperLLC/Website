@@ -97,8 +97,9 @@ const Megadrop: FC = () => {
             />
           ))}
       </div>
+        <div className="relative z-10">
       {/* Intro Header */}
-      <div className="text-center max-w-3xl mx-auto mb-12">
+      <div className="text-center max-w-3xl mx-auto mb-12 ">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Zyper Mega Airdrop <br/>Your Access to Real Rewards
         </h2>
@@ -152,6 +153,7 @@ const Megadrop: FC = () => {
         <p className="text-gray-300 text-base flex items-center justify-center gap-2">
           💥 This isn&apos;t just an airdrop — it’s your pass to Zyper&apos;s future.
         </p>
+      </div>
       </div>
     </div>
   );
