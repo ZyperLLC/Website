@@ -1,15 +1,17 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
 import HeroSection from "@/components/HeroSection"
 import ZyperCardsSection from "@/components/ZyperCardsSection"
 import ContactSection from "@/components/ContactSection"
-
+import RaffleModal from "@/components/RaffleModal"
 
 export default function ZyperLanding() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-
+  // Show RaffleModal popup on initial page load
+  const [showRaffle, setShowRaffle] = useState(true)
+  const handleCloseRaffle = () => setShowRaffle(false)
   useEffect(() => {
     const updateSize = () => {
       setDimensions({
@@ -54,6 +56,21 @@ export default function ZyperLanding() {
         <HeroSection />
         <ZyperCardsSection />
         <ContactSection />
+       
+        <AnimatePresence>
+          {showRaffle && (
+            <motion.div
+              key="raffle-modal"
+              initial={{ opacity: 0, scale: 0.95, y: 40 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 40 }}
+              transition={{ type: "spring", duration: 0.5 }}
+            >
+              <RaffleModal onClose={handleCloseRaffle} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       </div>
     </div>
   )
