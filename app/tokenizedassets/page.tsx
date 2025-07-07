@@ -99,10 +99,12 @@ export default function ZyperTokenizedAssets() {
                 className="rounded-lg overflow-hidden cursor-pointer bg-gray-800 border border-gray-700 w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 flex items-center justify-center"
               >
                 <Image
-                  src={src}
-                  alt={`Token image ${idx + 1}`}
-                  className="w-full h-full object-contain"
-                />
+      src={`/${src}`} // ✅ must start with "/"
+      alt={`Token image ${idx + 1}`}
+      width={256}
+      height={256}
+      className="w-full h-full object-contain"
+    />
               </motion.div>
             ))}
           </div>
