@@ -84,7 +84,7 @@ export default function HeroSection() {
             <Image src="/dollar.jpg" alt="Daily Rewards" width={60} height={60} />
             <div>
               <h3 className="text-2xl font-semibold">Daily Rewards</h3>
-              <p className="text-gray-400 text-lg">Hold the dolphin that&apos;s town - get a 7.7x payout</p>
+              <p className="text-gray-400 text-lg">Hold the dolphin that&apos;s drawn - get a 7.7x payout</p>
             </div>
           </div>
 
